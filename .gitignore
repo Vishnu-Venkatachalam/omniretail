@@ -1,0 +1,26 @@
+# === Java / Spring / Maven ===
+target/
+!.mvn/wrapper/maven-wrapper.jar
+*.log
+*.iml
+*.ipr
+*.iws
+.idea/
+# If using Gradle (ignore if Maven only)
+.gradle/
+build/
+
+# === Node / Frontend ===
+node_modules/
+dist/
+build/
+.cache/
+.npm/
+.yarn/
+.pnp.*
+
+# === OS / Editor ===
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp
