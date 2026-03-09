@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface CategoryRepo extends JpaRepository<Category, Long> {
 
-
+    boolean existsByName(String name);
     List<Category> findByParentCategoryIsNull();
 }

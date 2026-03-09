@@ -13,4 +13,6 @@ public interface ProductVariantRepo extends JpaRepository<ProductVariant, Long> 
             Long productId, String color, String size
     );
 
+    boolean existsByProduct_ProductIdAndColorIgnoreCaseAndSizeIgnoreCase(Long productId, String color, String size);
+
 }

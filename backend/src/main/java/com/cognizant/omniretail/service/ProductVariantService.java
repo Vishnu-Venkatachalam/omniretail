@@ -38,6 +38,13 @@ public class ProductVariantService {
         if (variant.getColor() == null || variant.getColor().trim().isEmpty()) {
             throw new RuntimeException("Color cannot be empty");
         }
+        if (variantRepo.existsByProduct_ProductIdAndColorIgnoreCaseAndSizeIgnoreCase(
+                productId,
+                variant.getColor().trim(),
+                variant.getSize().trim()
+        )) {
+            throw new RuntimeException("Variant with same color and size already exists");
+        }
 
         var existingVariant = variantRepo
                 .findByProduct_ProductIdAndColorIgnoreCaseAndSizeIgnoreCase(productId, variant.getColor(), variant.getSize());

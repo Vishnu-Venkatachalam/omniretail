@@ -28,6 +28,9 @@ public class ProductService {
         if (product.getBrand() == null || product.getBrand().trim().isEmpty()) {
             throw new RuntimeException("Product brand cannot be empty");
         }
+        if (productRepo.existsByNameAndBrand(product.getName().trim(), product.getBrand().trim())) {
+            throw new RuntimeException("Product with same name and brand already exists");
+        }
 
         // Check Category Exists
         Category category = categoryRepo.findById(categoryId)

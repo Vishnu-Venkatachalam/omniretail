@@ -24,6 +24,11 @@ public class CategoryService {
             throw new RuntimeException("Category name cannot be empty");
         }
 
+        if (categoryRepo.existsByName(category.getName())) {
+            throw new RuntimeException("Category already exists");
+        }
+
+
         // Business Logic 2: Parent should be null for main category
         category.setParentCategory(null);
 
@@ -40,6 +45,10 @@ public class CategoryService {
         // Business Logic: SubCategory name validation
         if (subCategory.getName() == null || subCategory.getName().trim().isEmpty()) {
             throw new RuntimeException("Sub Category name cannot be empty");
+        }
+
+        if (categoryRepo.existsByName(subCategory.getName())) {
+            throw new RuntimeException("Sub Category already exists");
         }
 
         // Set relationship
