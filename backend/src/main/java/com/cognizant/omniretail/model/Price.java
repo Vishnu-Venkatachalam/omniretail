@@ -34,10 +34,10 @@ public class Price {
     @JoinColumn(name="store_id",referencedColumnName = "storeId",nullable = false)
     private Store store;
 
-    @Column(name = "MRP", nullable = false)
+    @Column(name = "MRP", nullable = false, precision = 12, scale = 2)
     private BigDecimal mrp;
 
-    @Column(name = "selling_price", nullable = false)
+    @Column(name = "selling_price", nullable = false, precision = 12, scale = 2)
     private BigDecimal sellingPrice;
 
     @Column(name = "effective_from", nullable = false)

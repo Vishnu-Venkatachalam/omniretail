@@ -16,7 +16,7 @@ import java.util.List;
 @Entity
 @Table(name="Sale",
         indexes = {
-                //@Index(name="sale_store_id",columnList="store_id"),
+                @Index(name="sale_store_id",columnList="store_id"),
                 @Index(name="sale_sale_date",columnList = "sale_date"),
                 @Index(name="sale_channel",columnList = "channel")
         }

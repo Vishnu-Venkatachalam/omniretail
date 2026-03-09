@@ -1,6 +1,8 @@
 package com.cognizant.omniretail.model;
 
 import com.cognizant.omniretail.model.enums.ProductStatus;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,6 +34,7 @@ public class Product {
     //uni-directional
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="category_id",referencedColumnName = "categoryId", nullable = false)
+    @JsonIgnoreProperties({"products","hibernateLazyInitializer","handler"})
     private Category category;
 
     @Enumerated(EnumType.STRING)
@@ -39,7 +42,8 @@ public class Product {
     private ProductStatus status;
 
     //bi-directional
-    @OneToMany(mappedBy = "product",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "product",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"product","hibernateLazyInitializer","handler" })
     private List<ProductVariant> variants = new ArrayList<>();
 
 }

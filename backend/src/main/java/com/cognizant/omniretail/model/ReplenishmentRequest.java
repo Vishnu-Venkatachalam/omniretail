@@ -10,6 +10,7 @@ import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "replenishment_request",
@@ -63,16 +64,15 @@ public class ReplenishmentRequest {
 
     @CreationTimestamp // auto-set when persisted (Hibernate)
     @Column(name = "RequestedAt", nullable = false, updatable = false)
-    private Instant requestedAt;
-//
-//
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(
-//            name = "RequestedByUserID",
-//            nullable = false,
-//            foreignKey = @ForeignKey(name = "FK_ReplenishmentRequest_User")
-//    )
-//    @ToString.Exclude
-//    private User requestedBy;
+    private LocalDateTime requestedAt;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(
+            name = "RequestedByUserID",
+            nullable = false,
+            foreignKey = @ForeignKey(name = "FK_ReplenishmentRequest_User")
+    )
+    @ToString.Exclude
+    private User requestedBy;
 
 }

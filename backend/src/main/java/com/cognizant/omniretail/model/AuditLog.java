@@ -19,6 +19,9 @@ public class AuditLog {
     private Long auditId;
 
     // who performed the action (nullable for unknown user, like failed login)
+    //uni-directional
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "userId",nullable = true)
     private Long userId;
 
     @Column(nullable = false, length = 100)

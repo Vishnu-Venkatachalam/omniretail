@@ -42,10 +42,10 @@ public class Notification {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(
-//            name = "user_id",
-//            referencedColumnName = "userId"
-//    )
-//    private User user;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(
+            name = "user_id",
+            referencedColumnName = "userId"
+    )
+    private User user;
 }

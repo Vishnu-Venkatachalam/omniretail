@@ -2,6 +2,7 @@ package com.cognizant.omniretail.model;
 
 import com.cognizant.omniretail.model.enums.StoreStatus;
 import com.cognizant.omniretail.model.enums.StoreType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -44,5 +45,6 @@ public class Store {
 
     //Bi-directional mapping
     @OneToMany(mappedBy = "store", fetch = FetchType.LAZY) //receiver
+    @JsonIgnoreProperties({"store","hibernateLazyInitializer","handler"})
     private List<StoreInventory> storeInventoryList = new ArrayList<>();
 }

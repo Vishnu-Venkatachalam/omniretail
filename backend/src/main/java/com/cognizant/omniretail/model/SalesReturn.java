@@ -20,7 +20,7 @@ public class SalesReturn {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="return_id",nullable = false)
+    @Column(name="return_id",unique = true, nullable = false)
     private Long returnId;
 
     //added saleId as foreign key (uni-directional)

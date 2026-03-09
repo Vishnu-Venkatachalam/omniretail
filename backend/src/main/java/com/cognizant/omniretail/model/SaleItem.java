@@ -32,7 +32,8 @@ public class SaleItem {
     //    added variantId as foreign key (uni-directional)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
-            name="variantId",
+            name="variant_id",
+            referencedColumnName = "variantId",
             nullable=false
     )
     private ProductVariant variant;

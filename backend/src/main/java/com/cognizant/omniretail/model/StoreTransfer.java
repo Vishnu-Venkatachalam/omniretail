@@ -6,6 +6,7 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="store_transfer")
@@ -57,28 +58,28 @@ public class StoreTransfer {
     @Column(name = "status", length = 20, nullable = false)
     private TransferStatus status;
 
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(
-//            name = "requestedByUserID",
-//            nullable = false,
-//            foreignKey = @ForeignKey(name = "FK_TransferRequest_User")
-//    )
-//    @ToString.Exclude
-//    private User requestedBy;
-//
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(
+            name = "requestedByUserID",
+            nullable = false,
+            foreignKey = @ForeignKey(name = "FK_TransferRequest_User")
+    )
+    @ToString.Exclude
+    private User requestedBy;
+
     @CreationTimestamp // auto-set when persisted (Hibernate)
     @Column(name = "requestedAt", nullable = false, updatable = false)
-    private Instant requestedAt;
+    private LocalDateTime requestedAt;
 
-//    //wrong//@CreationTimestamp // auto-set when persisted (Hibernate)
-//    @Column(name = "decisionAt")
-//    private Instant decisionAt;
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(
-//            name = "decidedByUserID",
-//            foreignKey = @ForeignKey(name = "FK_DecidedBy_User")
-//    )
-//    @ToString.Exclude
-//    private User decidedBy;
+    @CreationTimestamp // auto-set when persisted (Hibernate)
+    @Column(name = "decisionAt")
+    private LocalDateTime decisionAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(
+            name = "decidedByUserID",
+            foreignKey = @ForeignKey(name = "FK_DecidedBy_User")
+    )
+    @ToString.Exclude
+    private User decidedBy;
 }
