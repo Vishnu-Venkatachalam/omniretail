@@ -16,8 +16,8 @@ import java.time.LocalDateTime;
 @Table(name = "replenishment_request",
         indexes = {
 
-                @Index(name = "idx_repl_store", columnList = "storeID"),
-                @Index(name = "idx_repl_variant", columnList = "VariantID"),
+                @Index(name = "idx_repl_store", columnList = "storeId"),
+                @Index(name = "idx_repl_variant", columnList = "variantId"),
                 @Index(name = "idx_repl_status", columnList = "Status")
 
         }

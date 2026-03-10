@@ -2,7 +2,6 @@
 package com.cognizant.omniretail.model;
 
 import com.cognizant.omniretail.model.enums.UserRole;
-import com.omniretail.omniretail_backend.iam.entity.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -51,6 +50,6 @@ public class User {
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
         if (this.status == null) this.status = "ACTIVE";
-        if (this.role == null) this.role = Role.ASSOCIATE; // sane default
+        if (this.role == null) this.role = UserRole.ASSOCIATE; // sane default
     }
 }

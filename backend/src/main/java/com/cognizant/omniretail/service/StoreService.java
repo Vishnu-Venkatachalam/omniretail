@@ -14,23 +14,23 @@ public class StoreService {
     @Autowired
     StoreRepository storeRepo;
 
-    //get all inventories of a store
+    //1. get all inventories of a store
     public List<StoreInventory> getStoreInventories(Long storeId){
         return storeRepo.findAllInventoriesById(storeId);
     }
 
-    //get all the stores in the table
+    //2. get all the stores in the table
     public List<Store> getAllStores(){
         return storeRepo.findAll();
     }
 
-    //add a new store
+    //3. add a new store
     public Store addStore(Store store){
         return storeRepo.save(store);
     }
-
-    //edit or update the details of a store
-    public Store updateStore(Store store, Long storeId){
-        return storeRepo.save(store);
-    }
+//
+//    //4. edit or update the details of a store
+//    public Store updateStore(Store store, Long storeId){
+//        return storeRepo.save(store);
+//    }
 }

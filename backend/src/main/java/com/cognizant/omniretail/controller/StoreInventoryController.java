@@ -16,7 +16,7 @@ public class StoreInventoryController {
     StoreInventoryService inventoryService;
 
     //1. get all the inventories in the table
-    @GetMapping("/all_")
+    @GetMapping("/all")
     public List<StoreInventory> getAllInventories(){
         return inventoryService.getAllInventories();
     }
@@ -49,5 +49,11 @@ public class StoreInventoryController {
     @PostMapping("/add")
     public StoreInventory addInventory(@RequestBody StoreInventory storeInventory){
         return inventoryService.addInventory(storeInventory);
+    }
+
+    //7. Reserving stock
+    @PatchMapping("reserve/{inventoryId}")
+    public StoreInventory reserveStock(@PathVariable Long inventoryId, @RequestParam Integer reserveQuantity) throws Exception {
+        return inventoryService.reserveStock(inventoryId, reserveQuantity);
     }
 }

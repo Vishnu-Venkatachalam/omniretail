@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StoreInventoryService {
@@ -45,13 +46,30 @@ public class StoreInventoryService {
         }
         minStock.setOnHandQuantity(minStock.getOnHandQuantity() + quantity);
         return inventoryRepo.save(minStock);
+    }
+
+    //7. Reserving stock
+    public StoreInventory reserveStock(Long inventoryId, Integer reserveQuantity) throws Exception {
+
+        if(reserveQuantity == null || reserveQuantity <= 0){
+            throw new IllegalArgumentException("quantity to reserve cannot be null");
+        }
+        StoreInventory inventory = inventoryRepo.findById(inventoryId)
+                .orElseThrow(()-> new Exception("Requested inventory not found"));
+
+        Integer onHand = inventory.getOnHandQuantity();
+        Integer reserved = inventory.getReservedQuantity();
+
+        if(onHand < reserveQuantity){
+            throw new Exception("Not enough onHandQuantity to reserve");
+        }
+        inventory.setOnHandQuantity(onHand - reserveQuantity);
+        inventory.setReservedQuantity(reserved + reserveQuantity);
+
+        return inventoryRepo.save(inventory);
 
     }
 
-    //
-    public StoreInventory subtractStockInventory(Long storeId, Long variantId){
-        return inventoryRepo.findTopByStore_StoreIdAndVariant_VariantIdOrderByOnHandQuantityAsc(storeId,variantId);
-    }
 
 
 }
