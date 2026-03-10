@@ -23,12 +23,16 @@ public class Assortment {
 
     //uni-directional (finding assortments by store_id)
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="store_id", referencedColumnName = "storeId", nullable = false)
+    @JoinColumn(name="store_id",
+            //referencedColumnName = "storeId",
+            nullable = false)
     private Store store;
 
     //uni-directional (finding assortments by variant_id)
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="variant_id", referencedColumnName = "variantId", nullable = false)
+    @JoinColumn(name="variant_id",
+            //referencedColumnName = "variantId",
+            nullable = false)
     private ProductVariant productvariant;
 
     @Enumerated(EnumType.STRING)

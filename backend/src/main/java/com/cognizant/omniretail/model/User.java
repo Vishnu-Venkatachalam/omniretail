@@ -1,6 +1,6 @@
-package com.omniretail.omniretail_backend.iam.model;
+package com.cognizant.omniretail.model;
 
-import com.omniretail.omniretail_backend.iam.model.enums.Role;
+import com.cognizant.omniretail.model.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 

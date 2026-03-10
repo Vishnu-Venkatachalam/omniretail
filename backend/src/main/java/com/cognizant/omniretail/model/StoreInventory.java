@@ -46,7 +46,7 @@ public class StoreInventory {
     )
     @JoinColumn(
             name = "store_id",
-            referencedColumnName = "store_id",
+            //referencedColumnName = "store_id",
             nullable = false
     )
     private Store store;
@@ -57,7 +57,7 @@ public class StoreInventory {
     )
     @JoinColumn(
             name = "variant_id",
-            referencedColumnName = "variantId",
+            //referencedColumnName = "variantId",
             nullable = false
     )
     private ProductVariant variant;

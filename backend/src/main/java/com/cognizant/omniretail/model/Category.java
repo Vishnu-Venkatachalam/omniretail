@@ -26,7 +26,9 @@ public class Category {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)// in the context of current entity as child category
-    @JoinColumn(name="parentCategory_id", referencedColumnName = "categoryId")
+    @JoinColumn(name="parentCategory_id"
+            //referencedColumnName = "categoryId"
+    )
     @JsonBackReference
     private Category parentCategory;
 

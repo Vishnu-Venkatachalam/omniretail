@@ -21,7 +21,9 @@ public class ProductVariant {
 
     //bi-directional
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="product_id",referencedColumnName = "productId",nullable = false)
+    @JoinColumn(name="product_id",
+//            referencedColumnName = "productId",
+            nullable = false)
     private Product product;
 
     @Column(nullable = false,unique = true)
