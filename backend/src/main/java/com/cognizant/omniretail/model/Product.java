@@ -33,7 +33,9 @@ public class Product {
 
     //uni-directional
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="category_id",referencedColumnName = "categoryId", nullable = false)
+    @JoinColumn(name="category_id",
+//            referencedColumnName = "categoryId",
+            nullable = false)
     @JsonIgnoreProperties({"products","hibernateLazyInitializer","handler"})
     private Category category;
 

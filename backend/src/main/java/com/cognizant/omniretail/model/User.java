@@ -1,21 +1,15 @@
-
 package com.cognizant.omniretail.model;
 
-import com.cognizant.omniretail.model.enums.UserRole;
-import com.omniretail.omniretail_backend.iam.entity.enums.Role;
+import com.cognizant.omniretail.model.enums.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "users", indexes = {
-        @Index(name = "idx_users_email_unique", columnList = "email", unique = true)
-})
-@Data
+@Table(name = "users")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -31,18 +25,18 @@ public class User {
     @Column(nullable = false, unique = true, length = 150)
     private String email;
 
-    @Column(length = 20)
+    @Column(nullable = false, unique = true, length = 20)
     private String phone;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
     private String passwordHash;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 30)
-    private UserRole role; // enum
+    private Role role;
 
     @Column(nullable = false, length = 20)
-    private String status; // ACTIVE / INACTIVE
+    private String status;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
@@ -50,7 +44,8 @@ public class User {
     @PrePersist
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
-        if (this.status == null) this.status = "ACTIVE";
-        if (this.role == null) this.role = Role.ASSOCIATE; // sane default
+        if (this.status == null) {
+            this.status = "ACTIVE";
+        }
     }
 }

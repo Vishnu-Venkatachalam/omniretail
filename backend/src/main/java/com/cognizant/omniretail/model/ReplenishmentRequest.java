@@ -36,7 +36,7 @@ public class ReplenishmentRequest {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(
             name = "store_id",
-            referencedColumnName = "storeId",
+            //referencedColumnName = "storeId",
             nullable = false,
             foreignKey = @ForeignKey(name = "FK_ReplenishmentRequest_Store")
     )
@@ -46,7 +46,7 @@ public class ReplenishmentRequest {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(
             name = "variant_id",
-            referencedColumnName = "variantId",
+            //referencedColumnName = "variantId",
             nullable = false,
             foreignKey = @ForeignKey(name = "FK_ReplenishmentRequest_ProductVariant")
     )
