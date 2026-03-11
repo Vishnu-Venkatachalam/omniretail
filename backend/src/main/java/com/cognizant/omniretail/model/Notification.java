@@ -44,8 +44,8 @@ public class Notification {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(
-            name = "user_id",
-            referencedColumnName = "userId"
+            name = "user_id"
+            //referencedColumnName = "userId"
     )
     private User user;
 }

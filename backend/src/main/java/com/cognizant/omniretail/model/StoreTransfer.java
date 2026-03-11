@@ -41,7 +41,7 @@ public class StoreTransfer {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(
             name = "variant_id",
-            referencedColumnName = "variantId",
+            //referencedColumnName = "variantId",
             nullable = false,
             foreignKey = @ForeignKey(name = "FK_TransferRequest_ProductVariant")
     )
