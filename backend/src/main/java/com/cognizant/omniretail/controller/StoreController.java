@@ -3,13 +3,15 @@ package com.cognizant.omniretail.controller;
 import com.cognizant.omniretail.model.Store;
 import com.cognizant.omniretail.model.StoreInventory;
 import com.cognizant.omniretail.service.StoreService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/store")
+@RequestMapping("/api/store")
+@SecurityRequirement(name = "bearerAuth")
 public class StoreController {
 
     @Autowired
@@ -33,7 +35,6 @@ public class StoreController {
         return storeService.addStore(store);
     }
 
-//
 //    @PutMapping("/update/{storeId}") //4. edit or update the details of a store
 //    public Store updateStore(@RequestBody Store store, @PathVariable Long storeId){
 //        return storeService.updateStore(store,storeId);

@@ -3,6 +3,7 @@ package com.cognizant.omniretail.controller;
 import com.cognizant.omniretail.model.Notification;
 import com.cognizant.omniretail.model.enums.NotificationStatus;
 import com.cognizant.omniretail.service.NotificationService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/omniretail/notifications")
+@SecurityRequirement(name = "bearerAuth")
 public class NotificationController {
 
     @Autowired
