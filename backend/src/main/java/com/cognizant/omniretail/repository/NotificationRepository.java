@@ -14,6 +14,6 @@ public interface NotificationRepository extends JpaRepository<Notification,Long>
     @Query("select n from Notification n WHERE n.user.userId =:userId")
     List<Notification> findNotificationsByUserId(Long userId);
 
-    @Query("select n from Notification n WHERE n.user.userId =:userId AND n.status:=status")
+    @Query("select n from Notification n WHERE n.user.userId =:userId AND n.status=:status")
     List<Notification> findNotifByUserAndStatus(Long userId, NotificationStatus status);
 }

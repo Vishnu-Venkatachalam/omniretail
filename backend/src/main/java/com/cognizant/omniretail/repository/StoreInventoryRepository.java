@@ -22,7 +22,7 @@ public interface StoreInventoryRepository extends JpaRepository<StoreInventory,L
     List<StoreInventory> findAllStoreInventories(Long storeId);
 
     //3. get all inventories of a specific store and a specific variant by their ids
-    @Query("select i from StoreInventory i WHERE" +
+    @Query("select i from StoreInventory i WHERE " +
             "i.store.storeId =:storeId AND i.variant.variantId =:variantId")
     List<StoreInventory> findAllStoreAndVariantInventories(Long storeId, Long variantId);
 
