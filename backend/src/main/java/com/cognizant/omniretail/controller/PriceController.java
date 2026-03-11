@@ -1,7 +1,7 @@
-package com.cognizant.omni.omniretail.controller;
+package com.cognizant.omniretail.controller;
 
-import com.cognizant.omni.omniretail.model.Price;
-import com.cognizant.omni.omniretail.service.PriceService;
+import com.cognizant.omniretail.model.Price;
+import com.cognizant.omniretail.service.PriceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

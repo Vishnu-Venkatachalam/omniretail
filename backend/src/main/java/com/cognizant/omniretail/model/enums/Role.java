@@ -1,6 +1,6 @@
 
 package com.cognizant.omniretail.model.enums;
 
-public enum UserRole {
+public enum Role {
     ADMIN, MANAGER, ASSOCIATE, MERCHANDISER, SUPPLYCHAIN
 }

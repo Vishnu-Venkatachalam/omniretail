@@ -1,8 +1,8 @@
-package com.cognizant.omni.omniretail.controller;
+package com.cognizant.omniretail.controller;
 
-import com.cognizant.omni.omniretail.model.Promotion;
-import com.cognizant.omni.omniretail.model.enums.PromotionStatus;
-import com.cognizant.omni.omniretail.service.PromotionService;
+import com.cognizant.omniretail.model.Promotion;
+import com.cognizant.omniretail.model.enums.PromotionStatus;
+import com.cognizant.omniretail.service.PromotionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

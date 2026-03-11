@@ -22,7 +22,7 @@ public class AuditLog {
     //uni-directional
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "userId",nullable = true)
-    private Long userId;
+    private User user;
 
     @Column(nullable = false, length = 100)
     private String action;      // e.g., LOGIN_SUCCESS, USER_CREATED

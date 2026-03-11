@@ -1,11 +1,11 @@
-package com.cognizant.omni.omniretail.service;
+package com.cognizant.omniretail.service;
 
-import com.cognizant.omni.omniretail.model.Product;
-import com.cognizant.omni.omniretail.model.ProductVariant;
-import com.cognizant.omni.omniretail.repository.ProductRepo;
-import com.cognizant.omni.omniretail.repository.ProductVariantRepo;
-import com.cognizant.omni.omniretail.repository.ProductVariantRepo;
-import com.cognizant.omni.omniretail.model.enums.*;
+import com.cognizant.omniretail.model.Product;
+import com.cognizant.omniretail.model.ProductVariant;
+import com.cognizant.omniretail.repository.ProductRepo;
+import com.cognizant.omniretail.repository.ProductVariantRepo;
+import com.cognizant.omniretail.repository.ProductVariantRepo;
+import com.cognizant.omniretail.model.enums.*;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,7 @@
 
 package com.cognizant.omniretail.model;
 
-import com.cognizant.omniretail.model.enums.UserRole;
-import com.omniretail.omniretail_backend.iam.entity.enums.Role;
+import com.cognizant.omniretail.model.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,7 +38,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 30)
-    private UserRole role; // enum
+    private Role role; // enum
 
     @Column(nullable = false, length = 20)
     private String status; // ACTIVE / INACTIVE

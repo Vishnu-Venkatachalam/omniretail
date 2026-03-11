@@ -1,7 +1,7 @@
-package com.cognizant.omni.omniretail.repository;
+package com.cognizant.omniretail.repository;
 
-import com.cognizant.omni.omniretail.model.Store;
-import com.cognizant.omni.omniretail.model.StoreInventory;
+import com.cognizant.omniretail.model.Store;
+import com.cognizant.omniretail.model.StoreInventory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

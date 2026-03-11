@@ -1,6 +1,6 @@
-package com.cognizant.omni.omniretail.repository;
+package com.cognizant.omniretail.repository;
 
-import com.cognizant.omni.omniretail.model.ProductVariant;
+import com.cognizant.omniretail.model.ProductVariant;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

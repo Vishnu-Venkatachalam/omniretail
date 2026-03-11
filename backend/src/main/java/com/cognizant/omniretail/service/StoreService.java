@@ -1,8 +1,8 @@
-package com.cognizant.omni.omniretail.service;
+package com.cognizant.omniretail.service;
 
-import com.cognizant.omni.omniretail.model.Store;
-import com.cognizant.omni.omniretail.model.StoreInventory;
-import com.cognizant.omni.omniretail.repository.StoreRepo;
+import com.cognizant.omniretail.model.Store;
+import com.cognizant.omniretail.model.StoreInventory;
+import com.cognizant.omniretail.repository.StoreRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

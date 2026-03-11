@@ -1,8 +1,8 @@
-package com.cognizant.omni.omniretail.controller;
+package com.cognizant.omniretail.controller;
 
-import com.cognizant.omni.omniretail.model.Assortment;
-import com.cognizant.omni.omniretail.model.enums.AssortmentStatus;
-import com.cognizant.omni.omniretail.service.AssortmentService;
+import com.cognizant.omniretail.model.Assortment;
+import com.cognizant.omniretail.model.enums.AssortmentStatus;
+import com.cognizant.omniretail.service.AssortmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

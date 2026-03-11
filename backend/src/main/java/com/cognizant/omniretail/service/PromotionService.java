@@ -1,8 +1,8 @@
-package com.cognizant.omni.omniretail.service;
+package com.cognizant.omniretail.service;
 
-import com.cognizant.omni.omniretail.model.Promotion;
-import com.cognizant.omni.omniretail.model.enums.PromotionStatus;
-import com.cognizant.omni.omniretail.repository.PromotionRepo;
+import com.cognizant.omniretail.model.Promotion;
+import com.cognizant.omniretail.model.enums.PromotionStatus;
+import com.cognizant.omniretail.repository.PromotionRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,7 +1,7 @@
-package com.cognizant.omni.omniretail.service;
+package com.cognizant.omniretail.service;
 
-import com.cognizant.omni.omniretail.model.Category;
-import com.cognizant.omni.omniretail.repository.CategoryRepo;
+import com.cognizant.omniretail.model.Category;
+import com.cognizant.omniretail.repository.CategoryRepo;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

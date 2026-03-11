@@ -1,10 +1,10 @@
-package com.cognizant.omni.omniretail.service;
-import com.cognizant.omni.omniretail.model.Price;
-import com.cognizant.omni.omniretail.model.ProductVariant;
-import com.cognizant.omni.omniretail.model.Store;
-import com.cognizant.omni.omniretail.repository.PriceRepo;
-import com.cognizant.omni.omniretail.repository.ProductVariantRepo;
-import com.cognizant.omni.omniretail.repository.StoreRepo;
+package com.cognizant.omniretail.service;
+import com.cognizant.omniretail.model.Price;
+import com.cognizant.omniretail.model.ProductVariant;
+import com.cognizant.omniretail.model.Store;
+import com.cognizant.omniretail.repository.PriceRepo;
+import com.cognizant.omniretail.repository.ProductVariantRepo;
+import com.cognizant.omniretail.repository.StoreRepo;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -34,7 +34,7 @@ public class PriceService {
         }
 
         // Validation 2: Price values
-        if (input.getSellingPrice() > input.getMrp()) {
+        if (input.getSellingPrice().compareTo(input.getMrp())>0) {
             throw new RuntimeException("sellingPrice cannot be greater than mrp");
         }
 
