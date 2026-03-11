@@ -25,7 +25,7 @@ public class SaleItem {
     @JsonBackReference
     @JoinColumn(
             name="sale_id",
-            referencedColumnName = "saleId",
+            //referencedColumnName = "saleId",
             nullable = false
     )
     private Sale sale;
@@ -33,7 +33,7 @@ public class SaleItem {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
             name="variant_id",
-            referencedColumnName = "variantId",
+            //referencedColumnName = "variantId",
             nullable=false
     )
     private ProductVariant variant;

@@ -36,7 +36,7 @@ public class Sale {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
             name="store_id",
-            referencedColumnName = "storeId",
+            //referencedColumnName = "storeId",
             nullable = false
     )
     private Store store;

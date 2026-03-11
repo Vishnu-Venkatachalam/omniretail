@@ -26,12 +26,16 @@ public class Price {
 
     //uni-directional
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="variant_id", referencedColumnName = "variantId", nullable = false)
+    @JoinColumn(name="variant_id",
+            //referencedColumnName = "variantId",
+            nullable = false)
     private ProductVariant productVariant;
 
     //uni-directional
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="store_id",referencedColumnName = "storeId",nullable = false)
+    @JoinColumn(name="store_id",
+            //referencedColumnName = "storeId",
+            nullable = false)
     private Store store;
 
     @Column(name = "MRP", nullable = false, precision = 12, scale = 2)

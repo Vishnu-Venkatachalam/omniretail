@@ -18,27 +18,23 @@ public class AuditLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long auditId;
 
-    // who performed the action (nullable for unknown user, like failed login)
-    //uni-directional
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "userId",nullable = true)
-    private User user;
+    @Column
+    private Long userId;
 
     @Column(nullable = false, length = 100)
-    private String action;      // e.g., LOGIN_SUCCESS, USER_CREATED
+    private String action;
 
     @Column(nullable = false, length = 150)
-    private String resource;    // e.g., /api/auth/login or USER:12
+    private String resource;
 
     @Column(nullable = false)
     private LocalDateTime timestamp;
 
-    // Keep it simple for mini project: store metadata as text (JSON-like string)
     @Column(columnDefinition = "TEXT")
     private String metadata;
 
     @PrePersist
     public void prePersist() {
-        timestamp = LocalDateTime.now();
+        this.timestamp = LocalDateTime.now();
     }
 }
