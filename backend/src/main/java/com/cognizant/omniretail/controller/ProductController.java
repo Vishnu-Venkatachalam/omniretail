@@ -1,8 +1,11 @@
 package com.cognizant.omniretail.controller;
 
 import com.cognizant.omniretail.model.Product;
+import com.cognizant.omniretail.model.ProductVariant;
 import com.cognizant.omniretail.model.enums.ProductStatus;
+import com.cognizant.omniretail.repository.ProductVariantRepo;
 import com.cognizant.omniretail.service.ProductService;
+import com.cognizant.omniretail.service.ProductVariantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,6 +21,8 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
+    private final ProductVariantRepo productVariantRepo;
+    private final ProductVariantService variantService;
 
     // Create Product under a Category
     @PostMapping(
@@ -33,6 +38,17 @@ public class ProductController {
 
     }
 
+    @PostMapping("/products/{productId}/variants")
+    public ResponseEntity<ProductVariant> createVariantUnderProduct(
+            @PathVariable Long productId,
+            @RequestBody ProductVariant variant
+    ) {
+        ProductVariant created = variantService.createVariant(productId, variant);
+        return ResponseEntity
+                .created(URI.create("/api/v1/variants/" + created.getVariantId()))
+                .body(created);
+    }
+
 
     // Get All Products
     @GetMapping("/products")
@@ -45,6 +61,14 @@ public class ProductController {
     public ResponseEntity<Product> getProductById(@PathVariable Long id) {
         return ResponseEntity.ok(productService.getProductById(id));
     }
+
+
+    @GetMapping("/products/{productId}/variants")
+    public ResponseEntity<List<ProductVariant>> getVariantsForProduct(@PathVariable Long productId) {
+        List<ProductVariant> variants = productVariantRepo.findByProduct_ProductId(productId);
+        return ResponseEntity.ok(variants);
+    }
+
 
     // Update Product (name, brand, status as per your service)
     @PutMapping("/products/{id}")

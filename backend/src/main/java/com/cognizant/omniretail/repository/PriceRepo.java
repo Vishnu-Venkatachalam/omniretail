@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public interface PriceRepo extends JpaRepository<Price, Long> {
 
@@ -23,5 +24,12 @@ public interface PriceRepo extends JpaRepository<Price, Long> {
             @Param("effectiveFrom") LocalDate effectiveFrom,
             @Param("effectiveTo") LocalDate effectiveTo
     );
+
+    @Query("""
+    SELECT p FROM Price p
+    WHERE p.productVariant.variantId = :variantId
+    ORDER BY p.effectiveFrom DESC, p.effectiveTo DESC
+""")
+    List<Price> findPricesByVariantSorted(@Param("variantId") Long variantId);
 
 }

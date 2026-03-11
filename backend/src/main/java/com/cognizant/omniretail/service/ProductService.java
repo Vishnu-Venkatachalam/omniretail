@@ -2,21 +2,31 @@ package com.cognizant.omniretail.service;
 
 import com.cognizant.omniretail.model.Product;
 import com.cognizant.omniretail.model.Category;
+import com.cognizant.omniretail.model.ProductVariant;
 import com.cognizant.omniretail.model.enums.ProductStatus;
+import com.cognizant.omniretail.model.enums.VariantStatus;
 import com.cognizant.omniretail.repository.ProductRepo;
 import com.cognizant.omniretail.repository.CategoryRepo;
 
+import com.cognizant.omniretail.repository.ProductVariantRepo;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ProductService {
 
     private final ProductRepo productRepo;
     private final CategoryRepo categoryRepo;
+
+    private final ProductVariantService variantService;
+    private final ProductVariantRepo productVariantRepo;
+
 
     //Create Product
     public Product createProduct(Product product, Long categoryId) {
@@ -43,7 +53,22 @@ public class ProductService {
             product.setStatus(ProductStatus.ACTIVE);
         }
 
-        return productRepo.save(product);
+        List<ProductVariant> incomingVariants =
+                (product.getVariants() != null) ? new ArrayList<>(product.getVariants()) : List.of();
+        product.setVariants(null);
+
+        Product saved = productRepo.save(product);
+
+        for (ProductVariant v : incomingVariants) {
+            // Do not trust incoming SKU; createVariant() will validate and generate SKU
+            ProductVariant toCreate = new ProductVariant();
+            toCreate.setColor(v.getColor());
+            toCreate.setSize(v.getSize());
+            toCreate.setStatus(v.getStatus() != null ? v.getStatus() : VariantStatus.ACTIVE);
+
+            variantService.createVariant(saved.getProductId(), toCreate);
+        }
+        saved.setVariants(productVariantRepo.findByProduct_ProductId(saved.getProductId()));        return saved;
     }
 
     //Update Product

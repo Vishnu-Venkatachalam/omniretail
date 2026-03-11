@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -27,6 +28,11 @@ public class PriceService {
 
         ProductVariant variant = variantRepo.findById(variantId)
                 .orElseThrow(() -> new RuntimeException("Variant not found"));
+
+        LocalDate today = LocalDate.now(); // server timezone
+        if (input.getEffectiveFrom() == null) {
+            input.setEffectiveFrom(today);
+        }
 
         // Validation 1: Date order
         if (input.getEffectiveFrom().isAfter(input.getEffectiveTo())) {
@@ -61,6 +67,11 @@ public class PriceService {
 
         return priceRepo.save(newPrice);
     }
+
+    public List<Price> getPricesForVariantSorted(Long variantId) {
+        return priceRepo.findPricesByVariantSorted(variantId);
+    }
+
 
     public List<Price> getAllPrices() {
         return priceRepo.findAll();

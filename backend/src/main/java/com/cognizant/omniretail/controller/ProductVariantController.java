@@ -1,7 +1,9 @@
 package com.cognizant.omniretail.controller;
 
+import com.cognizant.omniretail.model.Price;
 import com.cognizant.omniretail.model.ProductVariant;
 import com.cognizant.omniretail.model.enums.*;
+import com.cognizant.omniretail.service.PriceService;
 import com.cognizant.omniretail.service.ProductVariantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -9,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -17,17 +20,19 @@ import java.util.List;
 public class ProductVariantController {
 
     private final ProductVariantService variantService;
+    private final PriceService priceService;
 
-    // Create Variant for a Product
-    @PostMapping("/products/{productId}/variants")
-    public ResponseEntity<ProductVariant> createVariant(
-            @PathVariable Long productId,
-            @RequestBody ProductVariant variant
+    @PostMapping("/variants/{variantId}/stores/{storeId}/price")
+    public ResponseEntity<Price> setVariantPrice(
+            @PathVariable Long variantId,
+            @PathVariable Long storeId,
+            @RequestBody Price input
     ) {
-        ProductVariant created = variantService.createVariant(productId, variant);
-        return ResponseEntity
-                .created(URI.create("/api/v1/variants/" + created.getVariantId()))
-                .body(created);
+        if (input.getEffectiveFrom() == null) {
+            input.setEffectiveFrom(LocalDate.now());
+        }
+        Price created = priceService.createPrice(storeId, variantId, input);
+        return ResponseEntity.ok(created);
     }
 
     // Update Variant by ID
@@ -57,6 +62,11 @@ public class ProductVariantController {
     public ResponseEntity<ProductVariant> getVariantBySku(@PathVariable String sku) {
         ProductVariant variant = variantService.getVariantBySku(sku);
         return ResponseEntity.ok(variant);
+    }
+
+    @GetMapping("/variants/{variantId}/prices")
+    public ResponseEntity<List<Price>> getPricesForVariantSorted(@PathVariable Long variantId) {
+        return ResponseEntity.ok(priceService.getPricesForVariantSorted(variantId));
     }
 
     // Delete Variant by ID
