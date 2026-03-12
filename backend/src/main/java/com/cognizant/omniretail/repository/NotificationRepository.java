@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface NotificationRepository extends JpaRepository<Notification,Long> {
 
-    @Query("select n from Notification n WHERE n.user.userId =:userId")
+    @Query("select n from Notification n WHERE n.user.userId =:userId order by n.createdAt DESC")
     List<Notification> findNotificationsByUserId(Long userId);
 
     @Query("select n from Notification n WHERE n.user.userId =:userId AND n.status=:status")

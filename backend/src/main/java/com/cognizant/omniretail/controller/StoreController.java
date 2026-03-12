@@ -5,13 +5,14 @@ import com.cognizant.omniretail.model.StoreInventory;
 import com.cognizant.omniretail.service.StoreService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/store")
 @SecurityRequirement(name = "bearerAuth")
+@RequestMapping("/api/store")
 public class StoreController {
 
     @Autowired
@@ -30,7 +31,9 @@ public class StoreController {
     }
 
     //3. add a new store
+    //@SecurityRequirement(name = "bearerAuth")
     @PostMapping("/add")
+    //@PreAuthorize("hasRole(ADMIN)")
     public Store addStore(@RequestBody Store store){
         return storeService.addStore(store);
     }
