@@ -2,6 +2,7 @@ package com.cognizant.omniretail.controller;
 
 import com.cognizant.omniretail.model.Category;
 import com.cognizant.omniretail.service.CategoryService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/categories")
 @RequiredArgsConstructor
+@SecurityRequirement(name="bearerAuth")
 public class CategoryController {
 
     private final CategoryService categoryService;

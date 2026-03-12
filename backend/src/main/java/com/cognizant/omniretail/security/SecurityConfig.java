@@ -35,13 +35,13 @@ public class SecurityConfig {
                                 "/v3/api-docs/**"
                         ).permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/api/v1/categories/**").permitAll()
-                        .requestMatchers("/api/v1/products/**").permitAll()
-                        .requestMatchers("/api/v1/variants/**").permitAll()
-                        .requestMatchers("/store/**").permitAll()
-                        .requestMatchers("/api/v1/assortments/**").permitAll()
-                        .requestMatchers("/api/v1/prices/**").permitAll()
-                        .requestMatchers("/api/v1/promotion/**").permitAll()
+                        .requestMatchers("/api/v1/categories/**").authenticated()
+                        .requestMatchers("/api/v1/products/**").authenticated()
+                        .requestMatchers("/api/v1/variants/**").authenticated()
+                        .requestMatchers("/store/**").hasRole("ADMIN")
+                        .requestMatchers("/api/v1/assortments/**").authenticated()
+                        .requestMatchers("/api/v1/prices/**").authenticated()
+                        .requestMatchers("/api/v1/promotion/**").authenticated()
                         .anyRequest().authenticated()
                 );
 

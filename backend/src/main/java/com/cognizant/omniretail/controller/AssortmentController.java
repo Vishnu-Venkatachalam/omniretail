@@ -3,6 +3,7 @@ package com.cognizant.omniretail.controller;
 import com.cognizant.omniretail.model.Assortment;
 import com.cognizant.omniretail.model.enums.AssortmentStatus;
 import com.cognizant.omniretail.service.AssortmentService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/assortments")
 @RequiredArgsConstructor
+@SecurityRequirement(name="bearerAuth")
+
 public class AssortmentController {
 
     private final AssortmentService assortmentService;

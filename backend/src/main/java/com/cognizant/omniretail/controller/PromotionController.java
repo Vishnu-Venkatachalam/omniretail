@@ -3,6 +3,7 @@ package com.cognizant.omniretail.controller;
 import com.cognizant.omniretail.model.Promotion;
 import com.cognizant.omniretail.model.enums.PromotionStatus;
 import com.cognizant.omniretail.service.PromotionService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/promotions")
 @RequiredArgsConstructor
+@SecurityRequirement(name="bearerAuth")
 public class PromotionController {
 
     private final PromotionService promotionService;

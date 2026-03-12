@@ -3,12 +3,14 @@ package com.cognizant.omniretail.controller;
 import com.cognizant.omniretail.model.Store;
 import com.cognizant.omniretail.model.StoreInventory;
 import com.cognizant.omniretail.service.StoreService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
 @RequestMapping("/store")
+@SecurityRequirement(name="bearerAuth")
 public class StoreController {
 
     @Autowired

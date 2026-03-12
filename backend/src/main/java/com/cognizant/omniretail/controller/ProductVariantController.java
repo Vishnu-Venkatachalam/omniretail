@@ -5,6 +5,7 @@ import com.cognizant.omniretail.model.ProductVariant;
 import com.cognizant.omniretail.model.enums.*;
 import com.cognizant.omniretail.service.PriceService;
 import com.cognizant.omniretail.service.ProductVariantService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
+@SecurityRequirement(name="bearerAuth")
 public class ProductVariantController {
 
     private final ProductVariantService variantService;
